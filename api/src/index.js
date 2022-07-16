@@ -3,11 +3,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const metrics = require("./data/metrics.json");
 
 // defining the Express app
 const app = express();
-// defining an array to work as the database (temporary solution)
-const ads = [{ title: "Hello, world (again)!" }];
 
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
@@ -23,7 +22,7 @@ app.use(morgan("combined"));
 
 // defining an endpoint to return all ads
 app.get("/", (req, res) => {
-  res.send(ads);
+  res.send(metrics);
 });
 
 // starting the server
