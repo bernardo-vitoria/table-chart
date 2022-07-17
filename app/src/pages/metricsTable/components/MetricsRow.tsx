@@ -1,6 +1,3 @@
-import "pages/metricsTable/components/metricsRow/metricsRow.scss";
-import React from "react";
-
 type MetricsRowProps = {
   label: string;
   description: string;
@@ -17,7 +14,7 @@ const MetricsRow: React.FC<MetricsRowProps> = ({
   type,
 }) => {
   return (
-    <tr>
+    <tr data-testid="metricsRow">
       <td>{label}</td>
       <td>{description}</td>
       <td>{value}</td>
