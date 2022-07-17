@@ -11,15 +11,18 @@ const MetricsTable = () => {
       <Table headers={headers}>
         <>
           {metrics?.length > 0 &&
-            metrics?.map(({ label, description, value, category, type }) => (
-              <MetricsRow
-                label={label}
-                description={description}
-                value={value}
-                category={category}
-                type={type}
-              />
-            ))}
+            metrics?.map(
+              ({ id, label, description, value, category, type }) => (
+                <MetricsRow
+                  key={id}
+                  label={label}
+                  description={description}
+                  value={value}
+                  category={category}
+                  type={type}
+                />
+              )
+            )}
         </>
       </Table>
     </Page>
