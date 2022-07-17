@@ -12,8 +12,6 @@ const useMetrics: Hook = () => {
   const { get } = useMetricsGet();
   const { data, isLoading } = useQuery("useMetrics", () => get());
 
-  console.log("->", data);
-
   if (isLoading || isUndefined(data)) return { isLoading, metrics: [] };
 
   return {
