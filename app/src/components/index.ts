@@ -1,3 +1,4 @@
-import Page from "components/Page/Page";
+import Page from "components/page/Page";
+import Table from "components/table/Table";
 
-export { Page };
+export { Page, Table };

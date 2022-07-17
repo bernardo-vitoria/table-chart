@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
-import 'components/Page/Page.scss';
+import "components/page/page.scss";
 
-function Page({ children }: { children: ReactNode }) {
+type PageProps = {withBorders?: boolean, children: JSX.Element }
+
+const Page: React.FC<PageProps> = ({withBorders, children })  => {
   return (
-    <div className="page" data-testid="page">
+    <div className={`page ${withBorders ? 'page--with_borders' : ''}`} data-testid="page">
       {children}
     </div>
   );

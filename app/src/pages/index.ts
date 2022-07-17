@@ -1,4 +1,4 @@
 import Chart from "pages/chart";
-import Table from "pages/table";
+import { MetricsTable } from "pages/metricsTable";
 
-export { Chart, Table };
+export { Chart, MetricsTable };
