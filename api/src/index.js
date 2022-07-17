@@ -21,11 +21,11 @@ app.use(cors());
 app.use(morgan("combined"));
 
 // defining an endpoint to return all ads
-app.get("/", (req, res) => {
+app.get("/metrics", (req, res) => {
   res.send(metrics);
 });
 
 // starting the server
-app.listen(3001, () => {
+app.listen(8000, () => {
   console.log("listening on port 3001");
 });
