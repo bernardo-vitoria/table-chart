@@ -11,7 +11,6 @@ import {
 import { Bar } from "react-chartjs-2";
 import { useMetricsDataset } from "repository";
 import { Category } from "repository/useMetricsDataset";
-import MenuBar from "pages/components/menuBar/MenuBar";
 
 ChartJS.register(
   CategoryScale,
@@ -36,12 +35,8 @@ export const options = {
 };
 
 const Chart = () => {
-  const { datasets, labels, overallScore } = useMetricsDataset(Category.SHIFT);
-
-  const data = { labels, datasets };
   return (
     <>
-      <MenuBar />
       <Page withBorders>
         <>
           <div>

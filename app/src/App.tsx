@@ -1,4 +1,4 @@
-import { MetricsTable, Chart } from "pages";
+import { MainPage } from "pages";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -8,10 +8,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MetricsTable />} />
-        </Routes>
-        <Routes>
-          <Route path="/chart" element={<Chart />} />
+          <Route path="/" element={<MainPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

@@ -1,6 +1,5 @@
 import { Page, Table } from "components";
-import MenuBar from "pages/components/menuBar/MenuBar";
-import { MetricsRow } from "pages/metricsTable";
+import { MetricsRow } from "pages/mainPage/components/metricsTable";
 import useMetrics from "repository/useMetrics";
 
 const MetricsTable = () => {
@@ -9,7 +8,6 @@ const MetricsTable = () => {
 
   return (
     <>
-      <MenuBar />
       <Page>
         <Table headers={headers}>
           <>
