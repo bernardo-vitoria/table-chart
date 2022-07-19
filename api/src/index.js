@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const metrics = require("./data/metrics.json");
+var metrics = require("./data/metrics.json");
 
 // defining the Express app
 const app = express();
@@ -22,6 +22,12 @@ app.use(morgan("combined"));
 
 // defining an endpoint to return all ads
 app.get("/metrics", (req, res) => {
+  res.send(metrics);
+});
+
+// POST
+app.post("/metrics", (req, res) => {
+  metrics.data = [req.body, ...metrics.data];
   res.send(metrics);
 });
 
