@@ -1,0 +1,34 @@
+.metric_modal-title {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+.metric_modal-content {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  color: #686a6c;
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    span {
+      display: block;
+      color: #040f13;
+    }
+  }
+
+  &-value {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.metric_modal-footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}

@@ -2,13 +2,25 @@ import { ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import userEvent from "@testing-library/user-event";
+import { MetricContext, MetricStore } from "context";
 
-const customRender = (ui: JSX.Element, { ...options } = {}) => {
+const defaultStore = {
+  MetricStore,
+};
+
+const customRender = (
+  ui: JSX.Element,
+  { store = defaultStore, ...options } = {}
+) => {
   const CombinedProviders = ({ children }: { children: ReactNode }) => {
     const queryClient = new QueryClient();
 
     return (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <MetricContext.Provider value={store.MetricStore()}>
+          {children}
+        </MetricContext.Provider>
+      </QueryClientProvider>
     );
   };
 
