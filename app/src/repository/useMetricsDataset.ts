@@ -1,4 +1,3 @@
-import { IMetrics } from "api";
 import { useQuery } from "react-query";
 import useMetricsGet from "service/useMetricsGet";
 import { isUndefined } from "lodash";

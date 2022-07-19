@@ -14,13 +14,13 @@ const MenuBar: React.FC<MenuBarProps> = ({ subPage, setSubPage }) => {
         className={`${subPage === SubPagesNames.TABLE ? "active" : null}`}
         onClick={() => setSubPage(SubPagesNames.TABLE)}
       >
-        <a>{"Table"}</a>
+        <p>{"Table"}</p>
       </li>
       <li
         className={`${subPage === SubPagesNames.CHART ? "active" : null}`}
         onClick={() => setSubPage(SubPagesNames.CHART)}
       >
-        <a>{"Chart"}</a>
+        <p>{"Chart"}</p>
       </li>
     </ul>
   );

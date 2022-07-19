@@ -1,4 +1,4 @@
-export interface IMetrics {
+export interface IMetric {
   id: string;
   label: string;
   value: number;
@@ -11,4 +11,5 @@ const HOST = "localhost"; // easily injected by remote address
 
 export const URL = {
   getMetrics: `http://${HOST}:8000/metrics`,
+  updateMetric: (id: string) => `http://${HOST}:8000/metrics/${id}`,
 };

@@ -1,11 +1,11 @@
-import { IMetrics } from "api";
+import { IMetric } from "api";
 import { useQuery } from "react-query";
 import useMetricsGet from "service/useMetricsGet";
 import { isUndefined } from "lodash";
 
 type Hook = () => {
   isLoading: boolean;
-  metrics: IMetrics[];
+  metrics: IMetric[];
 };
 
 const useMetrics: Hook = () => {

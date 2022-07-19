@@ -35,6 +35,14 @@ export const options = {
 };
 
 const Chart = () => {
+  const { labels, datasets, overallScore } = useMetricsDataset(
+    Category.DOWNTIME
+  );
+
+  const data = {
+    labels,
+    datasets,
+  };
   return (
     <>
       <Page withBorders>

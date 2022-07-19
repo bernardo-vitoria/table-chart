@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IMetrics, URL } from "api";
+import { IMetric, URL } from "api";
 
 type Hook = () => {
-  get: () => Promise<IMetrics[]>;
+  get: () => Promise<IMetric[]>;
 };
 
 const useMetricsGet: Hook = () => {

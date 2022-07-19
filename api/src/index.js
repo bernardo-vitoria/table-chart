@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const metrics = require("./data/metrics.json");
+var metrics = require("./data/metrics.json");
 
 // defining the Express app
 const app = express();
@@ -22,7 +22,20 @@ app.use(morgan("combined"));
 
 // defining an endpoint to return all ads
 app.get("/metrics", (req, res) => {
-  res.send(metrics);
+  return res.send(metrics);
+});
+
+// POST
+app.post("/metrics/:id", (req, res) => {
+  const { id } = req.params;
+  const isValidId = Boolean(metrics.data.find((metric) => metric.id === id));
+
+  if (!isValidId) return res.status(400).end();
+
+  const newMetrics = metrics.data.filter((metric) => metric.id !== id);
+
+  metrics.data = [req.body, ...newMetrics];
+  return res.send(metrics);
 });
 
 // starting the server
