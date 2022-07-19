@@ -1,8 +1,13 @@
 import { Page, Table } from "components";
-import { MetricsRow } from "pages/mainPage/components/metricsTable";
+import {
+  MetricsRow,
+  UpdateMetricModal,
+} from "pages/mainPage/components/metricsTable/components";
+import { useState } from "react";
 import useMetrics from "repository/useMetrics";
 
 const MetricsTable = () => {
+  const [isModalActive, setIsModalActive] = useState(false);
   const { metrics } = useMetrics();
   const headers = ["Metric", "Description", "Value", "Category", "Type"];
 
@@ -21,12 +26,17 @@ const MetricsTable = () => {
                     value={value}
                     category={category}
                     type={type}
+                    onClick={() => setIsModalActive(true)}
                   />
                 )
               )}
           </>
         </Table>
       </Page>
+      <UpdateMetricModal
+        isActive={isModalActive}
+        onClose={() => setIsModalActive(false)}
+      />
     </>
   );
 };

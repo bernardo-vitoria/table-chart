@@ -4,6 +4,7 @@ type MetricsRowProps = {
   value: number;
   category: string;
   type: string;
+  onClick: () => void;
 };
 
 const MetricsRow: React.FC<MetricsRowProps> = ({
@@ -12,9 +13,10 @@ const MetricsRow: React.FC<MetricsRowProps> = ({
   value,
   category,
   type,
+  onClick,
 }) => {
   return (
-    <tr data-testid="metricsRow">
+    <tr data-testid="metricsRow" onClick={onClick}>
       <td>{label}</td>
       <td>{description}</td>
       <td>{value}</td>
