@@ -22,13 +22,20 @@ app.use(morgan("combined"));
 
 // defining an endpoint to return all ads
 app.get("/metrics", (req, res) => {
-  res.send(metrics);
+  return res.send(metrics);
 });
 
 // POST
-app.post("/metrics", (req, res) => {
-  metrics.data = [req.body, ...metrics.data];
-  res.send(metrics);
+app.post("/metrics/:id", (req, res) => {
+  const { id } = req.params;
+  const isValidId = Boolean(metrics.data.find((metric) => metric.id === id));
+
+  if (!isValidId) return res.status(400).end();
+
+  const newMetrics = metrics.data.filter((metric) => metric.id !== id);
+
+  metrics.data = [req.body, ...newMetrics];
+  return res.send(metrics);
 });
 
 // starting the server
