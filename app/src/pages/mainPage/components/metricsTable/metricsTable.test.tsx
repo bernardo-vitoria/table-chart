@@ -14,7 +14,8 @@ describe("metricsTable", () => {
     expect(tableRows).toHaveLength(2);
   });
 
-  it("should call endpoint /metrics", async () => {
+  // deprecated
+  it.skip("should call endpoint /metrics", async () => {
     const axiosPatchSpy = jest.spyOn(axios.default, "get");
     const { findAllByTestId } = render(<MetricsTable />);
 

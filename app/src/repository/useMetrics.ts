@@ -1,7 +1,6 @@
 import { IMetric } from "api";
-import { useQuery } from "react-query";
 import useMetricsGet from "service/useMetricsGet";
-import { isUndefined } from "lodash";
+import { isNil } from "lodash";
 
 type Hook = () => {
   isLoading: boolean;
@@ -9,14 +8,13 @@ type Hook = () => {
 };
 
 const useMetrics: Hook = () => {
-  const { get } = useMetricsGet();
-  const { data, isLoading } = useQuery("useMetrics", () => get());
+  const { data, isLoading } = useMetricsGet();
 
-  if (isLoading || isUndefined(data)) return { isLoading, metrics: [] };
+  if (isLoading || isNil(data)) return { isLoading, metrics: [] };
 
   return {
     isLoading,
-    metrics: data,
+    metrics: data?.metrics ?? [],
   };
 };
 export default useMetrics;

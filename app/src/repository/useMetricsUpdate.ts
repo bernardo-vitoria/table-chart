@@ -1,5 +1,6 @@
 import { IMetric } from "api";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
+import useMetricsGet from "service/useMetricsGet";
 import useMetricsPost from "service/useMetricsPost";
 
 type Hook = () => {
@@ -7,11 +8,11 @@ type Hook = () => {
 };
 
 const useMetricsUpdate: Hook = () => {
-  const queryClient = useQueryClient();
+  const { refetch } = useMetricsGet();
   const { post } = useMetricsPost();
   const { mutate } = useMutation(post, {
     onSettled: () => {
-      queryClient.invalidateQueries("useMetrics");
+      refetch();
     },
   });
 
@@ -23,4 +24,5 @@ const useMetricsUpdate: Hook = () => {
     updateMetric,
   };
 };
+
 export default useMetricsUpdate;

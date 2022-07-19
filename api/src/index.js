@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+var express_graphql = require("express-graphql");
+var { buildSchema } = require("graphql");
 var metrics = require("./data/metrics.json");
 
 // defining the Express app
@@ -37,6 +39,49 @@ app.post("/metrics/:id", (req, res) => {
   metrics.data = [req.body, ...newMetrics];
   return res.send(metrics);
 });
+
+/* var schema = buildSchema(`
+    type Query {
+        data(id: String): [Metric]
+    },
+    type Metric {
+    id: String
+    label: String
+    value: Int
+    type: String
+    description: String
+    category: String
+  },
+`); */
+
+var schema = buildSchema(`
+    type Query {
+      metrics: [Metric]
+    }
+    type Metric {
+    id: String
+    label: String
+    value: Float
+    type: String
+    description: String
+    category: String
+  }
+`);
+
+var root = {
+  metrics: () => {
+    return metrics.data;
+  },
+};
+
+app.use(
+  "/graphql",
+  express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 
 // starting the server
 app.listen(8000, () => {
