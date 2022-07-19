@@ -1,4 +1,4 @@
-import { Page } from "components";
+import { Button, Page } from "components";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +11,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import { useMetricsDataset } from "repository";
 import { Category } from "repository/useMetricsDataset";
+import "pages/mainPage/components/chart/chart.scss";
+import { useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -35,8 +37,9 @@ export const options = {
 };
 
 const Chart = () => {
+  const [selectedCategory, setSelectedCategory] = useState(Category.EFFICIENCY);
   const { labels, datasets, overallScore } = useMetricsDataset(
-    Category.DOWNTIME
+    selectedCategory
   );
 
   const data = {
@@ -47,8 +50,30 @@ const Chart = () => {
     <>
       <Page withBorders>
         <>
-          <div>
-            <p>Overall Score: {overallScore}%</p>
+          <div className="chart_header">
+            <div className="chart_header-score">
+              Overall Score: {overallScore}%
+            </div>
+            <div>
+              <Button
+                onClick={() => setSelectedCategory(Category.EFFICIENCY)}
+                selected={selectedCategory === Category.EFFICIENCY}
+              >
+                Effeciency
+              </Button>
+              <Button
+                onClick={() => setSelectedCategory(Category.DOWNTIME)}
+                selected={selectedCategory === Category.DOWNTIME}
+              >
+                Downtime
+              </Button>
+              <Button
+                onClick={() => setSelectedCategory(Category.SHIFT)}
+                selected={selectedCategory === Category.SHIFT}
+              >
+                Shift
+              </Button>
+            </div>
           </div>
           <Bar options={options} data={data} />;
         </>
