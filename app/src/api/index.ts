@@ -1,4 +1,4 @@
-import { URL, IMetrics } from "api/metrics";
+import { URL, IMetric } from "api/metrics";
 
 export { URL };
-export type { IMetrics };
+export type { IMetric };
