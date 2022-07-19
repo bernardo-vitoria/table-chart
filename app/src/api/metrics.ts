@@ -11,5 +11,6 @@ const HOST = "localhost"; // easily injected by remote address
 
 export const URL = {
   getMetrics: `http://${HOST}:8000/metrics`,
+  getMetricsQL: `http://${HOST}:8000/graphql`,
   updateMetric: (id: string) => `http://${HOST}:8000/metrics/${id}`,
 };
