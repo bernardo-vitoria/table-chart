@@ -1,8 +1,7 @@
-import { MetricsTable } from "pages";
+import MetricsTable from "pages/mainPage/components/metricsTable/MetricsTable";
 import * as axios from "axios";
 import { URL } from "api";
 import { render, waitFor } from "utils/testing";
-import { waitForDebugger } from "inspector";
 
 describe("metricsTable", () => {
   it("should render properly", async () => {
