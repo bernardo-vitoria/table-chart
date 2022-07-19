@@ -3,8 +3,8 @@ import * as axios from "axios";
 import { URL } from "api";
 import { render, waitFor } from "utils/testing";
 
-describe.only("metricsTable", () => {
-  it.only("should render properly", async () => {
+describe("metricsTable", () => {
+  it("should render properly", async () => {
     const { findByTestId, findAllByTestId } = render(<MetricsTable />);
 
     const table = await findByTestId("table");
