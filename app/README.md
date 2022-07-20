@@ -6,12 +6,12 @@ Here are some points that i find important to explain my decisions:
 
 -Architecture and Responsabilities
 -Used libs and why
--Pains/Next steps
+-Pains
+-Future
 
 ## Architecture and Responsabilities
 
 The organization I tried to follow is by functionality.
-P.S: You will see a lot of index, to simplify imports
 
 ```bash
 app
@@ -113,7 +113,7 @@ app
 
 this is where we have all utils to help develop the application
 
-### utils
+### mocks
 
 for MSW
 
