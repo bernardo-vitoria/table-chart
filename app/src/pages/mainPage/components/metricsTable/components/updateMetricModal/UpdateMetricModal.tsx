@@ -2,7 +2,7 @@ import { Button, Input, Modal } from "components";
 import { useMetricContext } from "context";
 import { isNil } from "lodash";
 import "pages/mainPage/components/metricsTable/components/updateMetricModal/updateMetricModal.scss";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 import useMetricsUpdate from "repository/useMetricsUpdate";
 
 type EventChange = ChangeEventHandler<HTMLInputElement>;
@@ -19,6 +19,10 @@ const UpdateMetricModal: React.FC<UpdateMetricModalProps> = ({
   const { selectedMetric } = useMetricContext();
   const { updateMetric } = useMetricsUpdate();
   const [value, setValue] = useState(selectedMetric?.value);
+
+  useEffect(() => {
+    setValue(selectedMetric?.value);
+  }, [selectedMetric?.value]);
 
   if (isNil(selectedMetric)) return <></>;
 
